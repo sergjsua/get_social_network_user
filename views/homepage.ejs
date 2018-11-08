@@ -1,0 +1,23 @@
+  <div id="homepage" v-cloak>
+    <div class="container">
+      <br/>
+      <h1 class="text-center">Profile</h1>
+      <div class="login-form-container">
+        <hr/>
+        <form action="/api/get-user-info" method="POST">
+          <div class="form-group">
+            <select class="form-control" focus-first name="network">
+              <option value="instagram" selected="selected">Instagram</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="User Handler" name="handler" value="jroman1964"></input>
+          </div>
+          <div class="form-group">
+            <ajax-button class="btn-dark btn-lg btn-block">Get Info</ajax-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
