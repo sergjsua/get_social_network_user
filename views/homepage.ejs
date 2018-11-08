@@ -11,7 +11,7 @@
             </select>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="User Handler" name="handler" value="" required autocomplete="off"></input>
+            <input type="text" class="form-control" placeholder="User Handler" name="handler" value="<% typeof handler !== 'undefined' ? handler : "" %>" required autocomplete="off"></input>
           </div>
           <div class="form-group">
             <ajax-button class="btn-dark btn-lg btn-block">Get Info</ajax-button>
@@ -21,6 +21,9 @@
     </div>
     <% if(typeof user !== 'undefined') { %>
       <div class="container">
+        <div class="sub-header">
+          <h4>Profile data from <%= handler %> user:</h4>
+        </div>
         <div><label>Name:</label><br><h5><%= user.name %></h5></div><br>
         <div><label>Description:</label><br><h5><%= user.description %></h5></div><br>
         <div><label>Followers:</label><br><h5><%= user.followers_number %></h5></div><br>
