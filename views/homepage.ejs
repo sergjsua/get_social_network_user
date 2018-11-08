@@ -19,5 +19,13 @@
         </form>
       </div>
     </div>
+    <% if(typeof user !== 'undefined') { %>
+      <div class="container">
+        <div><label for="">Name:</label><br><%= user.name %></div><br>
+        <div><label for="">Description:</label><br><%= user.description %></div><br>
+        <div><label for="">Followers:</label><br><%= user.followers_number %></div><br>
+        <div><label for="">Followings:</label><br><%= user.following_number %></div>
+      </div>
+    <% } %>
   </div>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
