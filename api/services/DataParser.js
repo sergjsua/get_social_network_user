@@ -9,8 +9,13 @@ module.exports = {
 	parseInstagramData: function(source) {
 		const prefix = '<script type="text/javascript">window._sharedData = '
 		const suffix = ';</script>'
-		const html = this.getStringFromHTML(source, prefix, suffix)
-		const userData = JSON.parse(html).entry_data.ProfilePage[0].graphql.user
+		const notFoundMessage = 'The link you followed may be broken, or the page may have been removed'
+		const userJSON = this.getStringFromHTML(source, prefix, suffix, notFoundMessage)
+		if(!userJSON) {
+			return false
+		}
+
+		const userData = JSON.parse(userJSON).entry_data.ProfilePage[0].graphql.user
 		const userObject = new UserInstagramModel(
 			userData.full_name,
 			userData.biography,
@@ -21,7 +26,11 @@ module.exports = {
 		return userObject
 	},
 
-	getStringFromHTML: function (source, prefix, suffix) {
+	getStringFromHTML: function (source, prefix, suffix, notFoundMessage) {
+
+		if(source.includes(notFoundMessage)) {
+			return false
+		}
 		
 		let i = source.indexOf(prefix);
 
