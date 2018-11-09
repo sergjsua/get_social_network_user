@@ -1,7 +1,7 @@
   <div id="homepage" v-cloak>
     <div class="container">
       <br/>
-      <h1 class="text-center">Profile</h1>
+      <h4 class="text-center">Profile</h4>
       <div class="login-form-container">
         <hr/>
         <form action="/api/get-user-info" method="POST">
@@ -22,7 +22,7 @@
     <% if(typeof user !== 'undefined') { %>
       <div class="container">
         <div class="sub-header">
-          <h4>Profile data from <%= handler %> user:</h4>
+          <h4><%= handler %> user's profile data:</h4>
         </div>
         <div><label>Name:</label><br><h5><%= user.name %></h5></div><br>
         <div><label>Description:</label><br><h5><%= user.description %></h5></div><br>
@@ -37,7 +37,11 @@
             <div class="post_item">
               <div class="image">
                 <img src="<%= post.imageUrl %>">
-                <label>ID:</label><span><%= post.id %></span><br><label>URL:</label><a href="<%= post.imageUrl %>"><%= post.imageUrl %></a>
+                <label>ID: </label>
+                <span><%= post.id %></span>
+                <br>
+                <label>Image URL: </label>
+                <a href="<%= post.imageUrl %>"><%= post.imageUrl %></a>
               </div>
             </div>
           <% }) %>
@@ -51,24 +55,3 @@
     <% } %>
   </div>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
-
-<style>
-  .sub-header {
-    text-align: center;
-  }
-  .container {
-    margin-bottom: 30px;
-  }
-  .post_item {
-    margin-bottom: 30px;
-  }
-  .post_item image {
-    width: 100px; 
-    height: 100px;
-    float: left;
-    margin-right: 20px;
-  }
-  .error_label {
-    text-align: center;
-  }
-</style>
